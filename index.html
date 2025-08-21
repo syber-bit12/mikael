@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para o unico garoto que já amei</title>
+  <meta name="description" content="Um presente romântico: nossas fotos, nossa história e um talvez ." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b12;
+      --fg: #ffffff;
+      --muted: #c9c9d4;
+      --pink: #ff477e;
+      --rose: #ff6b6b;
+      --violet: #8a5cff;
+      --cyan: #63e6be;
+      --glass: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: radial-gradient(1200px 800px at 20% 20%, #141428, var(--bg));
+      color: var(--fg);
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+    }
+    a { color: inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 2rem;
+      background: radial-gradient(60% 60% at 80% 20%, rgba(255, 71, 126, 0.15), transparent 60%), radial-gradient(50% 50% at 20% 80%, rgba(138, 92, 255, 0.18), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    }
+    .hero::before {
+      content:"";
+      position:absolute; inset:0; pointer-events:none;
+      background-image: radial-gradient(circle at 20% 20%, rgba(255,71,126,.25) 0 8px, transparent 9px), radial-gradient(circle at 80% 60%, rgba(255,107,107,.22) 0 6px, transparent 7px), radial-gradient(circle at 60% 30%, rgba(138,92,255,.18) 0 10px, transparent 11px);
+      background-size:220px 220px,300px 300px,260px 260px;
+      filter: blur(1px);
+      animation: floatBg 18s linear infinite alternate;
+    }
+    @keyframes floatBg { to{background-position:100px 120px,-160px -120px,-100px 80px;} }
+
+    .hero-inner { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.2rem; max-width:980px; }
+    .badge { display:inline-flex; align-items:center; gap:.5rem; background:var(--glass); padding:.5rem 1rem; border-radius:999px; border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(6px);}
+    .badge .dot { width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan);}
+    h1.title { font-family:"Playfair Display", serif; font-size:clamp(2rem,6vw,4rem); line-height:1.05; margin:0; }
+    .subtitle { color:var(--muted); font-size:clamp(1rem,2.6vw,1.25rem);}
+    .cta { display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center; margin-top:.6rem; }
+    .btn {
+      --b: rgba(255,255,255,.12);
+      border:1px solid var(--b);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      padding:.9rem 1.2rem;
+      border-radius:14px;
+      color:#fff;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      transition: transform .15s ease, border-color .2s ease;
+    }
+    .btn:hover { transform:translateY(-2px); border-color: rgba(255,255,255,.28);}
+    .btn.primary { background: linear-gradient(135deg,var(--pink),var(--violet)); border:none; }
+
+    /* SEÇÕES */
+    section { padding:72px 20px; }
+    .container { max-width:1100px; margin:0 auto; }
+    .section-title { font-family:"Playfair Display", serif; font-size:clamp(1.6rem,4vw,2.4rem); margin:0 0 .6rem; }
+    .section-sub { color:var(--muted); margin:0 0 1.2rem; }
+
+    /* CARTA */
+    .letter { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; }
+    .paper {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.1);
+      padding:24px;
+      border-radius:18px;
+      box-shadow: var(--shadow);
+    }
+    .paper p { margin:.8rem 0; color:#f1efff;}
+    .paper .sign { margin-top:1rem; color:var(--muted);}
+    .polaroid { background:#0f0f18; border:1px solid rgba(255,255,255,.08); padding:12px; border-radius:16px; box-shadow:var(--shadow); transform:rotate(-2deg);}
+    .polaroid img { border-radius:10px; }
+    
+    /* LINHA DO TEMPO */
+    .timeline { position:relative; margin-top:8px;}
+    .timeline::before { content:""; position:absolute; left:18px; top:0; bottom:0; width:2px; background:linear-gradient(var(--violet), var(--pink)); }
+    .event { position:relative; margin:22px 0 22px 48px; padding:14px 16px; border-radius:14px; background:var(--glass); border:1px solid rgba(255,255,255,.12);}
+    .event::before { content:""; position:absolute; left:-34px; top:12px; width:12px; height:12px; border-radius:50%; background:var(--rose); box-shadow:0 0 10px var(--rose);}
+    .event h4 { margin:.1rem 0 .3rem; } 
+    .event p { margin:0; color:var(--muted); }
+
+    /* CTA BOX */
+    .cta-box { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+    .cta-card { background: rgba(255,255,255,0.05); padding:20px; border-radius:20px; backdrop-filter:blur(6px); text-align:center; flex:1; min-width:250px; }
+    .cta-card h3 { color:#ffb6c1; margin:.2rem 0 0; }
+    .cta-card p { color:#eee; margin:.4rem 0; }
+
+    /* PLAYER */
+    .player { display:flex; align-items:center; gap:.6rem; background:var(--glass); border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:.4rem .8rem; }
+    .player button { border:0; background:transparent; color:#fff; cursor:pointer; font-weight:700; }
+
+    @media (max-width:900px){
+      .letter { grid-template-columns:1fr; }
+      .cta-box { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="hero-inner">
+      <span class="badge"><span class="dot"></span> Especial pra você</span>
+      <h1 class="title">Minha pele te pede, no peito saudade que não se mede, fora do comum. Não sou o primeiro, mas sei que não sou mais um... ❤️?</h1>
+      <p class="subtitle">Quando existe amor de verdade, não tem isso de “não estou pronto”. A gente constrói o momento certo juntos.</p>
+      <div class="cta">
+        <a class="btn primary" href="/galeria.html">fotos inesquecíveis</a>
+        <a class="btn" href="#carta">carta</a>
+        <a class="btn" href="#recomecar">chances</a>
+        <a class="btn" href="/musica.html">Músicas dedicadas</a>
+      </div>
+      <div class="player">
+        <button id="playBtn">▶︎</button>
+        <span id="trackLabel">Nossa música</span>
+        <audio id="audio" preload="none">
+          <source src="audio/nossa-musica.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div id="contador"></div>
+    </div>
+  </header>
+
+  <!-- CARTA -->
+  <section id="carta">
+    <div class="container letter">
+      <div class="paper">
+        <h2 class="section-title">Uma carta pra você</h2>
+        <h3>Para o único garoto que eu já amei</h3>
+        <p>Eu te amo muito. E mesmo com tudo o que aconteceu, ainda acredito na gente. Eu não quero te cobrar, nem jogar nada na sua cara. Só quero que você saiba que eu te vejo como você é: incrível, único, importante pra mim.</p>
+        <p>Se “viver mais” significa ser feliz de verdade, então eu quero viver isso com você. Porque amor não espera o momento perfeito, a gente cria ele juntos, com paciência, conversa e carinho.</p>
+        <p>Eu sinto falta do seu abraço, do seu beijo, e da paz que a gente sente quando está perto. Se o seu coração ainda fala meu nome, eu tô aqui.</p>
+        <p class="sign">Com amor, <strong>eu, "patinho"</strong> 💌</p>
+      </div>
+      <aside class="polaroid">
+        <img src="./img/IMG-20241214-WA0010.jpg" alt="foto polaroid nossa" />
+        <p>"Nous pouvons recommencer."</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- LINHA DO TEMPO -->
+ <section id="memorias">
+    <div class="container">
+      <h2 class="section-title">Nossa linha do tempo</h2>
+      <p class="section-sub">Lembra? Cada passo valeu a pena.</p>
+      <div class="timeline" id="timeline">
+        <div class="event"><h4>O começo</h4><p>Nos conhecemos e tudo começou a mudar.</p></div>
+        <div class="event"><h4>Nosso primeiro rolê</h4><p>Risos, frio na barriga por estar saindo escondidos e a certeza de que eu queria mais daquilo</p></div>
+        <div class="event"><h4>O abraço que virou lar</h4><p>Compartilhamos sonhos e segredos.</p></div>
+        <div class="event"><h4>Primeiro beijo</h4><p>sentados alí, a ânsia de sentir seus lábios com gloss, me fizeram ter a esperada "atitude"</p></div>
+        <div class="event"><h4>Pequenos encantos</h4><p>Descobrimos pequenas coisas que amávamos um no outro.</p></div>
+        <div class="event"><h4>Gestos que marcam</h4><p>Cada mensagem, cada alisada no meu rosto, cada ligação, seu amor, cada encontro, seus gestos de carinho e o amor de sua família se tornou especial..</p></div>
+        <div class="event"><h4> Momentos com Amigos e Família</h4><p>Passamos momentos incríveis com amigos e família, que me fizeram conhecer o mundo a fora, e criaram um laço mais que especial com vocês, e me fez me aproximar intelectualmente mais ainda com você.</p></div>
+        <div class="event"><h4>Apoio Mútuo</h4><p>Viajamos juntos, ou sonhamos com viagens que fariam nossos corações acelerar, pensavamos em coisas que podiam ser possíveis e feitas algum dia por a gente.</p></div>
+        <div class="event"><h4>Desentendimentos e Reconciliações</h4><p>Nos perdemos em discussões, por conta de egos fortes mas SEMPRE nos reencontramos.</p></div>
+        <div class="event"><h4>Celebrações</h4><p>Celebramos conquistas pessoais e do relacionamento.</p></div>
+        <div class="event"><h4>Presença Mesmo na Distância</h4><p>Mesmo nos momentos de distância, sentia a sua presença e seu apoio.</p></div>
+        <div class="event"><h4>Crescimento</h4><p>Crescemos juntos e individualmente, pouco? talvez. Mais foi lado a lado, e isso é um processo que só quem realmente está disposto, vai até o FIM...</p></div>
+        <div class="event"><h4>Valorizando cada gesto</h4><p>Descobrimos o valor de cada gesto, cada carinho, cada abraço, e eu te entendia sempre que você tinha um motivo para me descontrair, mais falto entendimento de ambas as partes.</p></div>
+        <div class="event"><h4>Recomeços</h4><p> E sempre lembramos que, não importa o que aconteça… nós podemos recomeçar, crescer juntos, felizes e se amando. tem dúvida se é possível? tenta, quem sem isso a pergunta fica no vão e não poderá ser respondida por ninguém.</p></div>
+        <div class="event"><h4>Fim</h4><p>para mim nunca haverá um fim. Sempre estarei com meu cell com notificações no máximo esperando uma ligação sua, de madrugada com o celular embaixo do travesseiro para conversar contigo, ou desabafar quando tudo estiver pesado, conversar sobre sua família, sua mãe, ou até mesmo das peruas, possa não parecer mais eu sei te entender se vc discorda eu respeito, e talvez você ache que não, mais eu te escuto e te apoio e embora eu seja sua ultima opção... Sempre estarei aqui, te esperando.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- RECOMEÇAR -->
+  <!-- RECOMEÇAR -->
+<section id="recomecar">
+  <div class="container">
+    <h2 class="section-title">Você vai sempre ter essa oportunidade</h2>
+    <p class="section-sub">Com carinho, vamos fazer dar certo, no seu tempo, leve esse pra vida. demorei 1 cemana para fazer.</p>
+    <div class="cta-box">
+      <div class="cta-card">
+        <h3>Conversar e ver o próximo passo</h3>
+        <p>Sem pressa, só pra trocar uma ideia e planejar o que vem a seguir, ou me chame pra sua casita.</p>
+        <a class="btn primary" href="https://wa.me/5584991938546?text=Oi,%20vamos%20conversar%20e%20ver%20o%20próximo%20passo?" target="_blank">Enviar mensagem</a>
+      </div>
+      <div class="cta-card">
+        <h3>Rever nossas fotos</h3>
+        <p>Momentos que marcaram nossa história, só pra lembrar do que vivemos.</p>
+        <a class="btn" href="/galeria.html">Ver fotos</a>
+      </div>
+      <div class="cta-card">
+        <h3>Conversar sem compromisso</h3>
+        <p>Um papo leve, crícas ou se expressar de boas.</p>
+        <a class="btn secondary" href="https://wa.me/5584991938546" target="_blank">Abrir chat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-box { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+  .cta-card { background: rgba(255,255,255,0.05); padding:20px; border-radius:20px; backdrop-filter:blur(6px); text-align:center; flex:1; min-width:250px; box-shadow: var(--shadow); transition: transform .2s ease; }
+  .cta-card:hover { transform: translateY(-4px); }
+  .cta-card h3 { color:#ffb6c1; margin:.2rem 0 0; }
+  .cta-card p { color:#eee; margin:.4rem 0 1rem; }
+  .btn.secondary { background: linear-gradient(135deg,#ff99c2,#ff4da6); border:none; color:#fff; }
+  .btn.secondary:hover { background: linear-gradient(135deg,#ff80ab,#ff3399); }
+</style>
+
+  <footer style="text-align:center; padding:24px; color:var(--muted); font-size:.9rem;">
+    &copy; 2025 Especial para você. <a href="#topo" class="btn">Voltar ao topo</a>
+  </footer>
+
+  <script>
+    // PLAYER
+    const playBtn = document.getElementById('playBtn');
+    const audio = document.getElementById('audio');
+    const trackLabel = document.getElementById('trackLabel');
+
+    playBtn.addEventListener('click', () => {
+      if(audio.paused){ audio.play(); playBtn.textContent='⏸︎'; trackLabel.textContent='Tocando: Nossa música'; }
+      else { audio.pause(); playBtn.textContent='▶︎'; trackLabel.textContent='Nossa música'; }
+    });
+
+    // CONTADOR DIAS
+    const contador = document.getElementById('contador');
+    const dataInicio = new Date("2024-08-21");
+    setInterval(()=> {
+      const hoje = new Date();
+      const diff = hoje - dataInicio;
+      const dias = Math.floor(diff / (1000*60*60*24));
+      contador.textContent = `Já se passaram ${dias} dias desde que a nossa história começou — e eu ainda quero viver o resto com você.`;
+    },1000*60*60);
+
+  </script>
+</body>
+</html>

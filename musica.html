@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist de Músicas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .player {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 320px;
+      text-align: center;
+    }
+
+    .player h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .music-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .music-list li {
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 12px;
+      background: #f9f9f9;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .music-list li:hover {
+      background: #ffe5ec;
+    }
+
+    .music-list li.active {
+      background: #ffb6c1;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff3b6f;
+    }
+  </style>
+</head>
+<body>
+  <div class="player">
+    <h2 id="trackLabel">Escolha uma música</h2>
+    <audio id="audio" controls preload="none" style="width: 100%; margin-bottom: 15px;">
+      <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+
+    <ul class="music-list" id="musicList">
+     <li data-src="audio/sonha comigo.mp3">Minha música: Sonha comigo</li>
+      <li data-src="audio/te esperando.mp3">Minha música: Te Esperando</li>
+      <li data-src="audio/ser humano ou anjo.mp3">Minha música: Ser Humano ou Anjo</li>
+      <li data-src="audio/ilha.mp3">Música dele: Ilha - Luan Santana</li>
+      <li data-src="audio/a hora é agora.mp3">Nós éramos: A Hora é Agora</li>
+      <li data-src="audio/poesia.mp3">Nossa música: Poesia Acústica 2</li>
+      <li data-src="audio/magica.mp3">O que deveria ser: Mágica - Calcinha Preta</li>
+    </ul>
+    
+    <button onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const audioSource = document.getElementById('audioSource');
+    const trackLabel = document.getElementById('trackLabel');
+    const musicList = document.getElementById('musicList').getElementsByTagName('li');
+
+    for (let item of musicList) {
+      item.addEventListener('click', () => {
+        for (let li of musicList) li.classList.remove('active');
+        item.classList.add('active');
+        audioSource.src = item.getAttribute('data-src');
+        audio.load();
+        audio.play();
+        trackLabel.textContent = item.textContent;
+      });
+    }
+  </script>
+</body>
+</html>

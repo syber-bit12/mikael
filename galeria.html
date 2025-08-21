@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossas fotos favoritas 💖🌈✨</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e003c, #6a00ff, #ff007f, #ffb600);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  @keyframes gradientBG {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  h2.section-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #ff5f6d, #ffc371, #8fd3f4, #a6c1ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes shine {
+    0%{background-position:0% 50%;}
+    100%{background-position:100% 50%;}
+  }
+
+  p.section-sub {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s ease-in-out infinite alternate;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-12px) rotate(-2deg) scale(1.06);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  }
+
+  .card img {
+    width: 100%;
+    display: block;
+    border-radius: 25px;
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+
+  .card:hover img {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(1.3) saturate(1.5) drop-shadow(0 0 20px #fff);
+  }
+
+  .caption {
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 25px;
+    box-shadow: 0 30px 60px rgba(255,255,255,0.4);
+    animation: popIn 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  @keyframes popIn {
+    0% {transform: scale(0.5) rotate(-10deg); opacity: 0;}
+    100% {transform: scale(1) rotate(0deg); opacity: 1;}
+  }
+
+  .lightbox .close,
+  .nav {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.3s;
+  }
+
+  .lightbox .close:hover,
+  .nav:hover { background: #ff69b4; color: #111; }
+
+  .lightbox .close { right: 20px; top: 20px; }
+  .nav.prev { left: 20px; top: 50%; transform: translateY(-50%); }
+  .nav.next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 20px;
+    animation: floatParticle 3s ease-out forwards;
+  }
+
+  @keyframes floatParticle {
+    0% {opacity: 1; transform: translateY(0) scale(1);}
+    100% {opacity: 0; transform: translateY(-150px) scale(2);}
+  }
+</style>
+</head>
+<body>
+
+<section id="galeria">
+  <div class="container">
+    <h2 class="section-title">Nossas fotos favoritas 💖🌈✨</h2>
+    <p class="section-sub">Momentos que me lembram por que você é único pra mim.</p>
+
+    <div class="gallery" id="gallery">
+      <figure class="card"><img src="./img/Imagem do WhatsApp de 2025-08-11 à(s) 15.42.51_237611a8.jpg" alt="nós dois sorrindo" data-caption="Seu sorriso é meu lugar favorito."><figcaption class="caption">Seu sorriso é meu lugar favorito.</figcaption></figure>
+      <figure class="card"><img src="./img/fotonarua.jpg" alt="selfie na rua" data-caption="Qualquer lugar com você vira casa."><figcaption class="caption">Qualquer lugar com você vira casa.</figcaption></figure>
+      <figure class="card"><img src="./img/foto32.jpg" alt="foto fofa" data-caption="A gente combina de um jeito que nem dá pra explicar."><figcaption class="caption">A gente combina de um jeito que nem dá pra explicar.</figcaption></figure>
+      <figure class="card"><img src="./img/diadesol.jpg" alt="dia de sol" data-caption="Dias claros, com você mais ainda."><figcaption class="caption">Dias claros, com você mais ainda.</figcaption></figure>
+      <figure class="card"><img src="./img/abraço.jpg" alt="abraço" data-caption="Um abraço seu resolve tudo."><figcaption class="caption">Um abraço seu resolve tudo.</figcaption></figure>
+      <figure class="card"><img src="./img/bobeira.jpg" alt="leveza" data-caption="Suas bobeiras é o meu ponto de paz."><figcaption class="caption">Suas bobeiras é o meu ponto de paz.</figcaption></figure>
+      <figure class="card"><img src="./img/teucarinho.jpg" alt="presença" data-caption="Estar com você ao meu lado, mudava tudo."><figcaption class="caption">Estar com você ao meu lado, mudava tudo.</figcaption></figure>
+      <figure class="card"><img src="./img/sdds.jpg" alt="Memórias" data-caption="Nunca me esquecerei de todos esses momentos lindos."><figcaption class="caption">Nunca me esquecerei de todos esses momentos lindos.</figcaption></figure>
+      <figure class="card"><img src="./img/crisma.jpg" alt="momentos importantes" data-caption="Seus momentos importantes que talvez você tenha se arrependido de ter registrado comigo."><figcaption class="caption">Seus momentos importantes que talvez você tenha se arrependido de ter registrado comigo.</figcaption></figure>
+      <figure class="card"><img src="./img/consideração.jpg" alt="consideração" data-caption="Você era meu melhor amigo, a pessoa que mais me fazia ser eu mesmo e a pessoa que conseguia me deixar seguro e me ajudava a ter boas escolhas, não direi que eu fazia o mesmo por que sinceramente não mais de nada, mas... sinto tanta sua falta."><figcaption class="caption">Você era meu melhor amigo, a pessoa que mais me fazia ser eu mesmo e a pessoa que conseguia me deixar seguro e me ajudava a ter boas escolhas, não direi que eu fazia o mesmo por que sinceramente não mais de nada, mas... sinto tanta sua falta.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightboxImg" alt="">
+  <button class="nav prev" id="prev">⟨</button>
+  <button class="nav next" id="next">⟩</button>
+  <button class="close" id="close">✕</button>
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('close');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const figs = Array.from(document.querySelectorAll('.gallery .card img'));
+  let indexAtual = 0;
+
+  function abrirLightbox(i) {
+    indexAtual = i;
+    const el = figs[i];
+    lightImg.src = el.src;
+    lightImg.alt = el.alt;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden','false');
+    criarParticulas(el);
+  }
+
+  function fecharLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+  }
+
+  function nav(delta) {
+    indexAtual = (indexAtual + delta + figs.length) % figs.length;
+    abrirLightbox(indexAtual);
+  }
+
+  figs.forEach((img, i) => {
+    img.addEventListener('click', () => abrirLightbox(i));
+  });
+
+  closeBtn.addEventListener('click', fecharLightbox);
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); nav(-1); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); nav(1); });
+  lightbox.addEventListener('click', e => { if(e.target===lightbox) fecharLightbox(); });
+  window.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key==='Escape') fecharLightbox();
+    if(e.key==='ArrowLeft') nav(-1);
+    if(e.key==='ArrowRight') nav(1);
+  });
+
+  function criarParticulas(el) {
+    const emojis = ['💖','💜','💛','💚','💙','✨','🌟','💫','💝','🌈'];
+    for(let i=0;i<20;i++){
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+      const rect = el.getBoundingClientRect();
+      particle.style.left = `${rect.left + Math.random()*rect.width}px`;
+      particle.style.top = `${rect.top + Math.random()*rect.height}px`;
+      particle.style.fontSize = `${14 + Math.random()*30}px`;
+      document.body.appendChild(particle);
+      setTimeout(()=>particle.remove(), 3000 + Math.random()*2000);
+    }
+  }
+</script>
+</body>
+</html>
